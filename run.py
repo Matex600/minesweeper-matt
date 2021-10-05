@@ -7,11 +7,17 @@ print("------ Start by entering username! ------")
 
 username = input()
 
-print("----- Welcome, " + username + ", good luck have fun! -----")
+print("----- Welcome, " + username + ", good luck & have fun! -----\n")
 
-# def initialize_game_board():
-"""
-"""
+def initialize_game_board(i, j):
+    """
+    Create game board using columns and rows
+    """
+    print("    Game started ... \n")
+    board = [["." for row in range(i)] for column in range(j)]
+    for row in board:
+        print(" ".join(str(cell) for cell in row))
+        print("")
 # def inject_bombs():
 """
 """
@@ -21,4 +27,6 @@ print("----- Welcome, " + username + ", good luck have fun! -----")
 # def game_over():
 """
 """
-# def main():
+def main():
+    initialize_game_board(12, 6)
+main()    
