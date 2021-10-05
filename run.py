@@ -3,3 +3,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 print("Welcome to Minesweeper")
 print("Start by entering username!")
+
+username = input()
+
+print("Welcome, " + username + ", have fun!")
