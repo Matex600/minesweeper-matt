@@ -9,17 +9,18 @@ print("------ Start by entering username! ------")
 username = input()
 
 print("----- Welcome, " + username + ", good luck & have fun! -----\n")
-mine_values = 8
-j = 8
-
+print('''Game instruction! \n
+         1. Enter a number between 1 and 8 for row
+            and column. (Example: 3, hit enter and 5)\n''')
 def initialize_game_board():
     """
-    Create game board using columns and rows
+    Function defines global variables and
+    creates the game board using the value j
+    for columns and rows through the use of for loops
     """
     print("    Game started ... \n")
     global mine_values
     global j
-    
 
     print()
     
@@ -56,16 +57,13 @@ def initialize_game_board():
     # """
     # inject randomised bombs to game board
     # """
-    # for
+
 
 # def player_input():
-"""
-"""
 
 
 # def game_over():
-"""
-"""
+
 
 
 def main():
