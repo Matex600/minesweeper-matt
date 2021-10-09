@@ -4,6 +4,7 @@ import os
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 global j
 global mine_values
+global mine_amount
 
 print("--------- Welcome to Minesweeper ---------")
 print(" --------- --------- --------- ---------")
@@ -24,7 +25,7 @@ def initialize_game_board():
     creates the game board using the value j
     for columns and rows through the use of for loops
     """
-    print("    Game started ... \n")
+    print("    Game starting ... \n")
     j = 6
     mine_values = [[' ' for y in range(j)] for x in range(j)]
     print()
@@ -61,10 +62,10 @@ def initialize_game_board():
 def inject_bombs():
     """
     This function stores data and values from the grid, mines
-    and flags as inject bombs to the game board
+    and flags and inject bombs to the game board
     """
     j = 6
-    # mine_amount = 4
+    mine_amount = 4
 
     numbers = [[0 for y in range(j)] for x in range(j)]
         
@@ -72,8 +73,7 @@ def inject_bombs():
 
     flag = []
     
-
-
+    
 
 
 # def player_input():
