@@ -5,6 +5,7 @@ import os
 global j
 global mine_values
 global mine_amount
+global numbers
 
 print("--------- Welcome to Minesweeper ---------")
 print(" --------- --------- --------- ---------")
@@ -59,6 +60,7 @@ def initialize_game_board():
 
     print()
 
+
 def inject_bombs():
     """
     This function stores data and values from the grid, mines
@@ -68,19 +70,30 @@ def inject_bombs():
     mine_amount = 4
 
     numbers = [[0 for y in range(j)] for x in range(j)]
-        
+
     mine_values = [[' ' for y in range(j)] for x in range(j)]
 
     flag = []
-    
-    
+
+    mine_count = 0
+
+    while mine_count < mine_amount:
+
+        grid_positions = random.randint(0, j*j -1)
+
+        r = grid_positions // j
+        col = grid_positions % j
+
+        if numbers[r][col] != - 1:
+            mine_count = mine_count + 1
+            numbers[r][col] = - 1
+
 
 
 # def player_input():
 
 
 # def game_over():
-
 
 
 def main():
