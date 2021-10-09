@@ -2,6 +2,9 @@ import random
 import os
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+global j
+global mine_values
+
 print("--------- Welcome to Minesweeper ---------")
 print(" --------- --------- --------- ---------")
 print("------ Start by entering username! ------")
@@ -10,8 +13,11 @@ username = input()
 
 print("----- Welcome, " + username + ", good luck & have fun! -----\n")
 print('''Game instruction! \n
-         1. Enter a number between 1 and 8 for row
-            and column. (Example: 3, hit enter and 5)\n''')
+        1. Enter a number between 1 and 6 for row
+            and column. (Example: 3, hit enter and 5)
+        2. Hitting a mine results in game over\n''')
+
+
 def initialize_game_board():
     """
     Function defines global variables and
@@ -19,9 +25,8 @@ def initialize_game_board():
     for columns and rows through the use of for loops
     """
     print("    Game started ... \n")
-    global mine_values
-    global j
-
+    j = 6
+    mine_values = [[' ' for y in range(j)] for x in range(j)]
     print()
     
     cell_block = "   "
@@ -53,10 +58,22 @@ def initialize_game_board():
 
     print()
 
-# def inject_bombs(bombs):
-    # """
-    # inject randomised bombs to game board
-    # """
+def inject_bombs():
+    """
+    This function stores data and values from the grid, mines
+    and flags as inject bombs to the game board
+    """
+    j = 6
+    # mine_amount = 4
+
+    numbers = [[0 for y in range(j)] for x in range(j)]
+        
+    mine_values = [[' ' for y in range(j)] for x in range(j)]
+
+    flag = []
+    
+
+
 
 
 # def player_input():
@@ -68,6 +85,7 @@ def initialize_game_board():
 
 def main():
     initialize_game_board()
+    inject_bombs()
     
 
 main()
