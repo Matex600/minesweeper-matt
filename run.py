@@ -63,8 +63,8 @@ def initialize_game_board():
 
 def inject_bombs():
     """
-    This function stores data and values from the grid, mines
-    and flags and inject bombs to the game board
+    This function stores data and values from the mines
+    and flags
     """
     j = 6
     mine_amount = 4
@@ -87,6 +87,23 @@ def inject_bombs():
         if numbers[r][col] != - 1:
             mine_count = mine_count + 1
             numbers[r][col] = - 1
+
+
+def actual_board_values()
+    """
+    This function sets up board values that are hidden from
+    the player and work in the background, checking the board for
+    presence of mines using a for loop
+    """
+
+    for r in range(j):
+        for col in range(j):
+
+            if numbers[r][col] == -1
+                continue
+            
+            
+
 
 
 
