@@ -7,12 +7,14 @@ global mine_values
 global mine_amount
 global numbers
 
+# Welcome message and username prompt
 print("--------- Welcome to Minesweeper ---------")
 print(" --------- --------- --------- ---------")
 print("------ Start by entering username! ------")
 
 username = input()
 
+# Message after username input with game instructions
 print("----- Welcome, " + username + ", good luck & have fun! -----\n")
 print('''Game instruction! \n
         1. Enter a number between 1 and 6 for row
@@ -31,11 +33,13 @@ def initialize_game_board():
     mine_values = [[' ' for y in range(j)] for x in range(j)]
     print()
     
+    # Layout of Minesweeper game area
     cell_block = "   "
     for i in range(j):
         cell_block = cell_block + "     " + str(i + 1)
     print(cell_block)
 
+    # For loop creates squares in the grid using | and _
     for r in range(j):
         cell_block = "     "
         if r == 0:
@@ -66,24 +70,31 @@ def inject_bombs():
     This function stores data and values from the mines
     and flags
     """
+    # Size of grid (6x6)
     j = 6
+    # Number of mines present
     mine_amount = 4
 
+    # Actual (hidden) values of the grid
     numbers = [[0 for y in range(j)] for x in range(j)]
-
+    # Visible values of the grid
     mine_values = [[' ' for y in range(j)] for x in range(j)]
 
+    # Flagged positions
     flag = []
 
+    # Tracking umber of mines already set starts at 0
     mine_count = 0
-
     while mine_count < mine_amount:
 
+        # Random number for grid positions
         grid_positions = random.randint(0, j*j -1)
 
+        # Generate row and column from numbers in grid
         r = grid_positions // j
         col = grid_positions % j
 
+        # Add a mine if there are none on the grid
         if numbers[r][col] != - 1:
             mine_count = mine_count + 1
             numbers[r][col] = - 1
@@ -95,16 +106,18 @@ def actual_board_values()
     the player and work in the background, checking the board for
     presence of mines using a for loop
     """
-
+    # Loop that counts every cell in the grid
     for r in range(j):
         for col in range(j):
-
-            if numbers[r][col] == -1
+            
+            if numbers[r][col] == - 1
                 continue
             
-            
+            if r > 0 and numbers[r-1][col] == - 1:
+                numbers[r][col] = numbers[r][col] + 1
 
-
+            if r < n-1 and numbers[r+1][col] == - 1:
+                numbers[r][col] = numbers[r][col] + 1  
 
 
 # def player_input():
