@@ -110,14 +110,42 @@ def actual_board_values()
     for r in range(j):
         for col in range(j):
             
+            # Skips check if a mine is present
             if numbers[r][col] == - 1
                 continue
-            
+
+            # Checks input above
             if r > 0 and numbers[r-1][col] == - 1:
                 numbers[r][col] = numbers[r][col] + 1
 
-            if r < n-1 and numbers[r+1][col] == - 1:
-                numbers[r][col] = numbers[r][col] + 1  
+            # Checks input below
+            if r < j-1 and numbers[r+1][col] == - 1:
+                numbers[r][col] = numbers[r][col] + 1
+
+            # Checks left input
+            if col > 0 and numbers[r][col-1] == - 1:
+                numbers[r][c] = numbers[r][c] + 1
+
+            # Checks right input
+            if col < j - 1 and numbers[r][col+1] == - 1
+                numbers[r][col] = numbers[r][col] + 1
+
+            # Checks top left input
+            if r > 0 and col > 0 and numbers[r-1][col-1] == - 1:
+                numbers[r][col] = numbers[r][col] + 1
+
+            # Checks top right input
+            if r > 0 and col < j - 1 and numbers[r-1][col+1] == - 1:
+                numbers[r][col] = numbers[r][col] + 1
+
+            # Checks bottom left input
+            if r < j - 1 and col > 0 and numbers[r+1][col-1] == - 1:
+                numbers[r][col] = numbers[r][col] + 1
+
+            # Checks bottom right input
+            if r < j - 1 and col < n - 1 and numbers[r + 1][col + 1] == - 1:
+                numbers[r][col] = numbers[r][col] + 1   
+                        
 
 
 # def player_input():
