@@ -100,18 +100,24 @@ def inject_bombs():
             numbers[r][col] = - 1
 
 
-def actual_board_values()
+def actual_board_values():
     """
     This function sets up board values that are hidden from
     the player and work in the background, checking the board for
     presence of mines using a for loop
     """
+    global j
+    global numbers
+
+    j = 6
+    numbers = [[0 for y in range(j)] for x in range(j)]
+
     # Loop that counts every cell in the grid
     for r in range(j):
         for col in range(j):
             
             # Skips check if a mine is present
-            if numbers[r][col] == - 1
+            if numbers[r][col] == - 1:
                 continue
 
             # Checks input above
@@ -127,7 +133,7 @@ def actual_board_values()
                 numbers[r][c] = numbers[r][c] + 1
 
             # Checks right input
-            if col < j - 1 and numbers[r][col+1] == - 1
+            if col < j - 1 and numbers[r][col+1] == - 1:
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks top left input
@@ -143,7 +149,7 @@ def actual_board_values()
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks bottom right input
-            if r < j - 1 and col < n - 1 and numbers[r + 1][col + 1] == - 1:
+            if r < j - 1 and col < j - 1 and numbers[r + 1][col + 1] == - 1:
                 numbers[r][col] = numbers[r][col] + 1   
                         
 
@@ -157,6 +163,7 @@ def actual_board_values()
 def main():
     initialize_game_board()
     inject_bombs()
+    actual_board_values()
     
 
 main()
