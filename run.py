@@ -24,12 +24,15 @@ print("------ Start by entering username! ------")
 
 username = input()
 
+
 # Message after username input with game instructions
-print("----- Welcome, " + username + ", good luck & have fun! -----\n")
-print('''Game instruction! \n
-        1. Enter a number between 1 and 6 for row
-            and column. (Example: 3, hit enter and 5)
-        2. Hitting a mine results in game over\n''')
+def instructions():
+    print("----- Welcome, " + username + ", good luck & have fun! -----\n")
+    print('''Game instructions! \n
+        1. Game board contains 6 rows, columns and mines.
+        2. Enter a number between 1 and 6 for row
+            and column. (Example: "3, 5")
+        3. Hitting a mine results in game over\n''')
 
 
 def initialize_game_board():
@@ -71,6 +74,7 @@ def initialize_game_board():
         print(cell_block + "|")
 
     print()
+    
 
 
 def inject_bombs():
@@ -142,19 +146,13 @@ def actual_board_values():
 
             # Checks bottom right input
             if r < grid_size - 1 and col < grid_size - 1 and numbers[r+1][col+1] == -1:
-                numbers[r][col] = numbers[r][col] + 1
-                        
+                numbers[r][col] = numbers[r][col] + 1              
 
-# def player_input():
- # if user_input in range 6
-
-# def game_over():
 
 def main():
-    initialize_game_board()
+    instructions()
     inject_bombs()
     actual_board_values()
     
 
 main()
-
