@@ -14,7 +14,11 @@ numbers = [[0 for y in range(grid_size)] for x in range(grid_size)]
 # Tracking umber of mines already set starts at 0
 num_mines_present = 0
 
+# Number of mines in play grid
 max_mine_num = 6
+
+# Flagged positions
+flags = []
 
 
 # Welcome message and username prompt
@@ -83,8 +87,7 @@ def inject_bombs():
     and flags
     """
 
-    # Flagged positions
-    flag = []
+    
     num_mines_present = 0
     while num_mines_present < max_mine_num:
 
@@ -192,6 +195,35 @@ def main():
                 print("Incorrect flag input.. try again")
                 instructions()
                 continue
-            
+            if val[0] > n or val[0] < 1 or val[1] > n or val[1] < 1:
+                print("Incorrect flag input.. try again")
+                instructions()
+                continue
+            # Getting row and column numbers
+            r = val[0]-1
+            col = val[1]-1
+
+            # If grid cell already flagged by user
+            if [r, col] in flags:
+                print("This cell has already been flagged")
+                continue
+            # If grid cell already displayed to user
+            if mine_values[r][col] != ' ':
+                print("This cell is already known")
+                continue
+            # Checks number of flags
+            if len(flags) < max_mine_num:
+                print("You have set a flag!")
+
+                # Appending flag to list
+                flags.append([r, col])
+
+                # Set flag display to user
+                mine_values[r][col] = 'F'
+                continue
+            else:
+                print("Flags finished")
+                continue
+
 
 main()
