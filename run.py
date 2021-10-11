@@ -150,9 +150,48 @@ def actual_board_values():
 
 
 def main():
+    """
+    Main function that runs the game
+    from start to end
+    """
     instructions()
     inject_bombs()
     actual_board_values()
-    
+
+    # This variable maintains the game loop
+    over = False
+    # Game loop
+    while not over:
+        """
+        While loop handles grid cells that have
+        already been selected or not
+        if it is already displayed to user and checks
+        that number of flags does not exceed number of mines
+        """
+        initialize_game_board()
+        player_input = input("Enter a row number followed by a space and column number = ").split()
+
+        # Standard player input check
+        if len(player_input) == 2:
+            try:
+                val = list(map(int, player_input))
+                print("Input selected...", player_input)
+            except ValueError:
+                print("Input is incorrect.. please make correct selection")
+                instructions()
+                continue
+        # Flag input check
+        elif len(player_input) == 3:
+            if player_input[2] != 'F' and player_input[2] != 'f':
+                print("Incorrect flag input.. try again")
+                instructions()
+                continue
+            try:
+                val = list(map(int, player_input[:2]))
+            except ValueError:
+                print("Incorrect flag input.. try again")
+                instructions()
+                continue
+            
 
 main()
