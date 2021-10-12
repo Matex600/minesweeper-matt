@@ -196,7 +196,7 @@ def main():
                 print("Incorrect flag input.. try again")
                 instructions()
                 continue
-            if val[0] > n or val[0] < 1 or val[1] > n or val[1] < 1:
+            if val[0] > grid_size or val[0] < 1 or val[1] > grid_size or val[1] < 1:
                 print("Incorrect flag input.. try again")
                 instructions()
                 continue
