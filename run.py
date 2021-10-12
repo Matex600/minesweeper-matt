@@ -80,14 +80,12 @@ def initialize_game_board():
     print()
     
 
-
 def inject_bombs():
     """
     This function stores data and values from the mines
     and flags
     """
 
-    
     num_mines_present = 0
     while num_mines_present < max_mine_num:
 
@@ -148,8 +146,10 @@ def actual_board_values():
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks bottom right input
-            if r < grid_size - 1 and col < grid_size - 1 and numbers[r+1][col+1] == -1:
-                numbers[r][col] = numbers[r][col] + 1              
+            if (r < grid_size - 1
+                and col < grid_size - 1
+                    and numbers[r+1][col+1] == -1):
+                numbers[r][col] = numbers[r][col] + 1
 
 
 def main():
@@ -172,7 +172,8 @@ def main():
         that number of flags does not exceed number of mines
         """
         initialize_game_board()
-        player_input = input("Enter a row number followed by a space and column number = ").split()
+        player_input = input('''Enter a row number
+        followed by a space and column number = ''').split()
 
         # Standard player input check
         if len(player_input) == 2:
