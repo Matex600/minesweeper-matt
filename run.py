@@ -1,6 +1,7 @@
+# Imported modules
 import random
 import os
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+
 
 # Size of game grid (6x6)
 grid_size = 6
@@ -112,7 +113,7 @@ def actual_board_values():
     # Loop that counts every cell in the grid
     for r in range(grid_size):
         for col in range(grid_size):
-            
+          
             # Skips check if a mine is present
             if numbers[r][col] == - 1:
                 continue
@@ -225,6 +226,23 @@ def main():
             else:
                 print("Flags finished")
                 continue
+        else:
+            print("Incorrect flag input.. try again")
+            instructions()
 
+        if val[0] > grid_size or val[0] < 1 or val[1] > grid_size or val[1] < 1:
+            print("Incorrect flag input.. try again")
+            instructions()
+            continue
+        # Get row and column numbers
+        r = val[0]-1
+        col = val[1]-1
+
+        # If cell already flagged check
+        if [r, col] in flags:
+            flags.remove([r, col])
+
+            
+        
 
 main()
