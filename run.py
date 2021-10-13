@@ -164,8 +164,19 @@ def clear():
 
 
 def check_game_concluded():
+    """
+    Function to check if game has conculded
+    """
+    num_mines_present = 0
 
+    # Loop to check each square in grid
+    for r in range(grid_size):
+        for col in range(grid_size):
 
+            # If the cell contains mine
+            if mine_values[r][col] != ' ' and mine_values[r][col] != 'F':
+                num_mines_present = num_mines_present + 1
+    
 
 def main():
     """
