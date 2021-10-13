@@ -156,6 +156,17 @@ def actual_board_values():
                 numbers[r][col] = numbers[r][col] + 1
 
 
+def clear():
+    """
+    This function clears the terminal
+    """
+    os.system("clear")
+
+
+def check_game_concluded():
+
+
+
 def main():
     """
     Main function that runs the game
@@ -253,6 +264,23 @@ def main():
             print("You have hit a mine... Game over!")
             over = True
             continue
+        # If landing on a cell with no mines around it
+        elif numbers[r][col] == 0:
+            visit = []
+            mine_values[r][col] = '0'
+            adjoining_cells(r, col)
+        # If landing on a cell with at least one adjoining_cells
+        else:
+            mine_values[r][col] = numbers[r][col]
 
+        # If game completed check
+        if(check_game_concluded()):
+            inject_bombs()
+            initialize_game_board()
+            print("Well done.. you have won! :)")
+            over = True
+            continue
+        clear()
+    
 
 main()
