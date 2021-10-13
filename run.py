@@ -156,11 +156,28 @@ def actual_board_values():
                 numbers[r][col] = numbers[r][col] + 1
 
 
+def adjoining_cells():
+    """
+    """
+
+
 def clear():
     """
     This function clears the terminal
     """
     os.system("clear")
+
+
+def display_mines():
+    """
+    Displays mines to player once a square in the grid
+    with a mine present
+    """
+
+    for r in range(grid_size):
+        for col in range(grid_size):
+            if numbers[r][col] == - 1:
+                mine_values[r][col] = 'M'
 
 
 def check_game_concluded():
@@ -176,7 +193,12 @@ def check_game_concluded():
             # If the cell contains mine
             if mine_values[r][col] != ' ' and mine_values[r][col] != 'F':
                 num_mines_present = num_mines_present + 1
-    
+
+    if num_mines_present == grid_size * grid_size - max_mine_num:
+        return True
+    else:
+        return False
+
 
 def main():
     """
@@ -270,7 +292,7 @@ def main():
         # Game over when landing on a mine check
         if numbers[r][col] == -1:
             mine_values[r][col] = 'M' # M represents Mine
-            inject_bombs()
+            display_mines()
             initialize_game_board()
             print("You have hit a mine... Game over!")
             over = True
@@ -286,7 +308,7 @@ def main():
 
         # If game completed check
         if(check_game_concluded()):
-            inject_bombs()
+            display_mines()
             initialize_game_board()
             print("Well done.. you have won! :)")
             over = True
