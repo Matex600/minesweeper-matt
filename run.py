@@ -32,6 +32,9 @@ username = input()
 
 # Message after username input with game instructions
 def instructions():
+    """
+    Game instruction function
+    """
     print("----- Welcome, " + username + ", good luck & have fun! -----\n")
     print('''Game instructions! \n
         1. Game board contains 6 rows, columns and mines.
@@ -242,7 +245,14 @@ def main():
         if [r, col] in flags:
             flags.remove([r, col])
 
-            
-        
+        # Game over when landing on a mine check
+        if numbers[r][col] == -1:
+            mine_values[r][col] = 'M' # M represents Mine
+            inject_bombs()
+            initialize_game_board()
+            print("You have hit a mine... Game over!")
+            over = True
+            continue
+
 
 main()
