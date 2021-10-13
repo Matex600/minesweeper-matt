@@ -21,6 +21,8 @@ max_mine_num = 6
 # Flagged positions
 flags = []
 
+global empty_cell
+
 
 # Welcome message and username prompt
 print("--------- Welcome to Minesweeper ---------")
@@ -158,7 +160,37 @@ def actual_board_values():
 
 def adjoining_cells():
     """
+    This is a recursive function to display all empty cells
+    marked with (0)
     """
+    global empty_cell
+    # If cell is empty
+    if [r, col] not in empty_cell:
+        empty_cell.append([r, col])
+        # 0 value cell
+        if numbers[r][col] == 0:
+            # Show user
+            mine_values[r][col] = numbers[r][col]
+            # Recursive for adjoining cells
+            if r > 0:
+                adjoining_cells(r-1, col)
+            if r < grid_size-1:
+                adjoining_cells(r+1, col)
+            if col > 0:
+                adjoining_cells(r, col-1)
+            if col < grid_size-1:
+                adjoining_cells(r, col+1)
+            if r > 0 and col > 0:
+                adjoining_cells(r-1, col-1)
+            if r > 0 and col < grid_size-1:
+                adjoining_cells(r-1, col+1)
+            if r < grid_size-1 and col > 0:
+                adjoining_cells()(r+1, col-1)
+            if r <grid_size-1 and col < grid_size-1:
+                adjoining_cells(r+1, col+1)
+        # If not empty cell
+        if number[r][col] != 0:
+            mine_values[r][col] = numbers[r][col]
 
 
 def clear():
@@ -205,6 +237,8 @@ def main():
     Main function that runs the game
     from start to end
     """
+    global empty_cell
+
     instructions()
     inject_bombs()
     actual_board_values()
@@ -299,7 +333,7 @@ def main():
             continue
         # If landing on a cell with no mines around it
         elif numbers[r][col] == 0:
-            visit = []
+            empty_cell = []
             mine_values[r][col] = '0'
             adjoining_cells(r, col)
         # If landing on a cell with at least one adjoining_cells
