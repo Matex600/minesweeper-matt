@@ -23,8 +23,6 @@ MAX_MINE_NUM = 8
 # Flagged positions
 flags = []
 
-EMPTY_CELL = []
-
 
 # Welcome message and username prompt
 print("--------- Welcome to Minesweeper ---------")
@@ -47,6 +45,8 @@ def instructions():
         3. Flag a mine by making a selection and adding "F"
         4. Hitting a mine results in game over!
         \n''')
+
+    print("    Game loading ... \n")
     time.sleep(2)
 
 
@@ -56,8 +56,6 @@ def initialize_game_board():
     creates the game board using the value GRID_SIZE
     for columns and rows through the use of for loops
     """
-    print("    Game loading ... \n")
-    time.sleep(0.5)
     print()
     # Layout of Minesweeper game area
     cell_block = "   "
@@ -66,9 +64,9 @@ def initialize_game_board():
     print(cell_block)
 
     # For loop creates squares in the grid using | and _
-    for r in range(GRID_SIZE):
+    for row in range(GRID_SIZE):
         cell_block = "     "
-        if r == 0:
+        if row == 0:
             for col in range(GRID_SIZE):
                 cell_block = cell_block + "______"
             print(cell_block)
@@ -78,9 +76,9 @@ def initialize_game_board():
             cell_block = cell_block + "|     "
         print(cell_block + "|")
 
-        cell_block = "  " + str(r + 1) + "  "
+        cell_block = "  " + str(row + 1) + "  "
         for col in range(GRID_SIZE):
-            cell_block = cell_block + "|  " + str(mine_values[r][col]) + "  "
+            cell_block = cell_block + "|  " + str(mine_values[row][col]) + "  "
         print(cell_block + "|")
 
         cell_block = "     "
@@ -105,13 +103,13 @@ def inject_bombs():
         grid_positions = random.randint(0, GRID_SIZE*GRID_SIZE - 1)
 
         # Generate row and column from numbers in grid
-        r = grid_positions // GRID_SIZE
+        row = grid_positions // GRID_SIZE
         col = grid_positions % GRID_SIZE
 
         # Add a mine if there are none on the grid
-        if numbers[r][col] != - 1:
+        if numbers[row][col] != - 1:
             NUM_MINES_PRESENT = NUM_MINES_PRESENT + 1
-            numbers[r][col] = - 1
+            numbers[row][col] = - 1
 
 
 def actual_board_values():
@@ -122,61 +120,65 @@ def actual_board_values():
     """
 
     # Loop that counts every cell in the grid
-    for r in range(GRID_SIZE):
+    for row in range(GRID_SIZE):
         for col in range(GRID_SIZE):
           
             # Skips check if a mine is present
-            if numbers[r][col] == - 1:
+            if numbers[row][col] == - 1:
                 continue
 
             # Checks input above
-            if r > 0 and numbers[r-1][col] == - 1:
-                numbers[r][col] = numbers[r][col] + 1
+            if row > 0 and numbers[row-1][col] == - 1:
+                numbers[row][col] = numbers[row][col] + 1
 
             # Checks input below
-            if r < GRID_SIZE-1 and numbers[r+1][col] == - 1:
-                numbers[r][col] = numbers[r][col] + 1
+            if row < GRID_SIZE-1 and numbers[row+1][col] == - 1:
+                numbers[row][col] = numbers[row][col] + 1
 
             # Checks left input
-            if col > 0 and numbers[r][col-1] == - 1:
-                numbers[r][col] = numbers[r][col] + 1
+            if col > 0 and numbers[row][col-1] == - 1:
+                numbers[row][col] = numbers[row][col] + 1
 
             # Checks right input
-            if col < GRID_SIZE - 1 and numbers[r][col+1] == - 1:
-                numbers[r][col] = numbers[r][col] + 1
+            if col < GRID_SIZE - 1 and numbers[row][col+1] == - 1:
+                numbers[row][col] = numbers[row][col] + 1
 
             # Checks top left input
-            if r > 0 and col > 0 and numbers[r-1][col-1] == - 1:
-                numbers[r][col] = numbers[r][col] + 1
+            if row > 0 and col > 0 and numbers[row-1][col-1] == - 1:
+                numbers[row][col] = numbers[row][col] + 1
 
             # Checks top right input
-            if r > 0 and col < GRID_SIZE - 1 and numbers[r-1][col+1] == - 1:
-                numbers[r][col] = numbers[r][col] + 1
+            if (row > 0
+                and col < GRID_SIZE - 1
+                    and numbers[row-1][col+1] == - 1):
+                numbers[row][col] = numbers[row][col] + 1
 
             # Checks bottom left input
-            if r < GRID_SIZE - 1 and col > 0 and numbers[r+1][col-1] == - 1:
-                numbers[r][col] = numbers[r][col] + 1
+            if (row < GRID_SIZE - 1
+                and col > 0
+                    and numbers[row+1][col-1] == - 1):
+                numbers[row][col] = numbers[row][col] + 1
 
             # Checks bottom right input
-            if (r < GRID_SIZE - 1
+            if (row < GRID_SIZE - 1
                 and col < GRID_SIZE - 1
-                    and numbers[r+1][col+1] == -1):
-                numbers[r][col] = numbers[r][col] + 1
+                    and numbers[row+1][col+1] == -1):
+                numbers[row][col] = numbers[row][col] + 1
 
 
-def adjoining_cells(r, col):
+def adjoining_cells(row, col):
     """
     This is a recursive function to display all empty cells
     marked with (0)
     """
     # If cell is empty
-    if [r, col] not in EMPTY_CELL:
+    if [row, col] not in EMPTY_CELL:
 
         # Mark visited cell
-        EMPTY_CELL.append([r, col])
+        EMPTY_CELL.append([row, col])
 
         # 0 value cell
-        if numbers[r][col] == 0:
+        if numbers[row][col] == 0:
 
             # Show user
             # mine_values[r][col] = numbers[r][col]
@@ -188,25 +190,25 @@ def adjoining_cells(r, col):
             #         print()
             #         y += 1
             #     x += 1
-            if r > 0:
-                adjoining_cells(r-1, col)
-            if r < GRID_SIZE-1:
-                adjoining_cells(r+1, col)
+            if row > 0:
+                adjoining_cells(row-1, col)
+            if row < GRID_SIZE-1:
+                adjoining_cells(row+1, col)
             if col > 0:
-                adjoining_cells(r, col-1)
+                adjoining_cells(row, col-1)
             if col < GRID_SIZE-1:
-                adjoining_cells(r, col+1)
-            if r > 0 and col > 0:
-                adjoining_cells(r-1, col-1)
-            if r > 0 and col < GRID_SIZE-1:
-                adjoining_cells(r-1, col+1)
-            if r < GRID_SIZE-1 and col > 0:
-                adjoining_cells(r+1, col-1)
-            if r < GRID_SIZE-1 and col < GRID_SIZE-1:
-                adjoining_cells(r+1, col+1)
+                adjoining_cells(row, col+1)
+            if row > 0 and col > 0:
+                adjoining_cells(row-1, col-1)
+            if row > 0 and col < GRID_SIZE-1:
+                adjoining_cells(row-1, col+1)
+            if row < GRID_SIZE-1 and col > 0:
+                adjoining_cells(row+1, col-1)
+            if row < GRID_SIZE-1 and col < GRID_SIZE-1:
+                adjoining_cells(row+1, col+1)
         # If not empty cell
-        if numbers[r][col] != 0:
-            mine_values[r][col] = numbers[r][col]
+        if numbers[row][col] != 0:
+            mine_values[row][col] = numbers[row][col]
 
 
 def clear():
@@ -222,10 +224,10 @@ def display_mines():
     with a mine present
     """
 
-    for r in range(GRID_SIZE):
+    for row in range(GRID_SIZE):
         for col in range(GRID_SIZE):
-            if numbers[r][col] == - 1:
-                mine_values[r][col] = 'M'
+            if numbers[row][col] == - 1:
+                mine_values[row][col] = 'M'
 
 
 def check_game_concluded():
@@ -235,11 +237,11 @@ def check_game_concluded():
     NUM_MINES_PRESENT = 0
 
     # Loop to check each square in grid
-    for r in range(GRID_SIZE):
+    for row in range(GRID_SIZE):
         for col in range(GRID_SIZE):
 
             # If the cell contains mine
-            if mine_values[r][col] != ' ' and mine_values[r][col] != 'F':
+            if mine_values[row][col] != ' ' and mine_values[row][col] != 'F':
                 NUM_MINES_PRESENT = NUM_MINES_PRESENT + 1
 
     if NUM_MINES_PRESENT == GRID_SIZE * GRID_SIZE - MAX_MINE_NUM:
@@ -301,15 +303,15 @@ def main():
                 instructions()
                 continue
             # Getting row and column numbers
-            r = val[0]-1
+            row = val[0]-1
             col = val[1]-1
 
             # If grid cell already flagged by user
-            if [r, col] in flags:
+            if [row, col] in flags:
                 print("This cell has already been flagged")
                 continue
             # If grid cell already displayed to user
-            if mine_values[r][col] != ' ':
+            if mine_values[row][col] != ' ':
                 print("This cell is already known")
                 continue
             # Checks number of flags
@@ -317,10 +319,10 @@ def main():
                 print("You have set a flag!")
 
                 # Appending flag to list
-                flags.append([r, col])
+                flags.append([row, col])
 
                 # Set flag display to user
-                mine_values[r][col] = 'F'
+                mine_values[row][col] = 'F'
                 continue
             else:
                 print("Flags finished")
@@ -337,29 +339,29 @@ def main():
             instructions()
             continue
         # Get row and column numbers
-        r = val[0]-1
+        row = val[0]-1
         col = val[1]-1
 
         # If cell already flagged check
-        if [r, col] in flags:
-            flags.remove([r, col])
+        if [row, col] in flags:
+            flags.remove([row, col])
 
         # Game over when landing on a mine check
-        if numbers[r][col] == -1:
-            mine_values[r][col] = 'M'  # M represents Mine
+        if numbers[row][col] == -1:
+            mine_values[row][col] = 'M'  # M represents Mine
             display_mines()
             initialize_game_board()
             print("You have hit a mine... Game over!")
             over = True
             continue
         # If landing on a cell with no mines around it
-        elif numbers[r][col] == 0:
+        elif numbers[row][col] == 0:
             EMPTY_CELL = []
-            mine_values[r][col] = '0'
-            adjoining_cells(r, col)
+            mine_values[row][col] = '0'
+            adjoining_cells(row, col)
         # If landing on a cell with at least one adjoining_cells
         else:
-            mine_values[r][col] = numbers[r][col]
+            mine_values[row][col] = numbers[row][col]
 
         # If game completed check
         if(check_game_concluded()):
