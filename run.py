@@ -5,7 +5,7 @@ import random
 import os
 
 # Size of game grid (6x6)
-GRID_SIZE = 10  # fix this
+GRID_SIZE = 6
 
 #  Visible values of the grid
 mine_values = [[' ' for y in range(GRID_SIZE)] for x in range(GRID_SIZE)]
@@ -17,7 +17,7 @@ numbers = [[0 for y in range(GRID_SIZE)] for x in range(GRID_SIZE)]
 NUM_MINES_PRESENT = 0
 
 # Number of mines in play grid
-MAX_MINE_NUM = 10
+MAX_MINE_NUM = 6
 
 # Flagged positions
 flags = []
@@ -90,8 +90,9 @@ def inject_bombs():
     This function stores data and values from the mines
     and flags
     """
-
+    
     NUM_MINES_PRESENT = 0
+    
     while NUM_MINES_PRESENT < MAX_MINE_NUM:
 
         # Random number for grid positions
