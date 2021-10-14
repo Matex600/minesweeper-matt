@@ -3,9 +3,10 @@ Imported modules     describe file briefly.
 """
 import random
 import os
+import time
 
-# Size of game grid (6x6)
-GRID_SIZE = 6
+# Size of game grid (8x8)
+GRID_SIZE = 8
 
 #  Visible values of the grid
 mine_values = [[' ' for y in range(GRID_SIZE)] for x in range(GRID_SIZE)]
@@ -17,10 +18,12 @@ numbers = [[0 for y in range(GRID_SIZE)] for x in range(GRID_SIZE)]
 NUM_MINES_PRESENT = 0
 
 # Number of mines in play grid
-MAX_MINE_NUM = 6
+MAX_MINE_NUM = 8
 
 # Flagged positions
 flags = []
+
+EMPTY_CELL = []
 
 
 # Welcome message and username prompt
@@ -38,11 +41,13 @@ def instructions():
     """
     print("----- Welcome, " + username + ", good luck & have fun! -----\n")
     print('''Game instructions! \n
-        1. Game board contains 6 rows, columns and mines.
-        2. Enter a number between 1 and 6 for row
-            and column. (Example: "3, 5")
-        3. Hitting a mine results in game over\n''')
-
+        1. Game board contains 8 rows, columns and mines.
+        2. Enter a number between 1 and 8 for row
+            and column. (Example: "3 5" "3 5 F")
+        3. Flag a mine by making a selection and adding "F"
+        4. Hitting a mine results in game over!
+        \n''')
+        
 
 def initialize_game_board():
     """
@@ -51,7 +56,7 @@ def initialize_game_board():
     for columns and rows through the use of for loops
     """
     print("    Game starting ... \n")
-
+    time.sleep(8)
     print()
     # Layout of Minesweeper game area
     cell_block = "   "
@@ -83,7 +88,7 @@ def initialize_game_board():
         print(cell_block + "|")
 
     print()
-    
+
 
 def inject_bombs():
     """
@@ -163,7 +168,7 @@ def adjoining_cells(r, col):
     This is a recursive function to display all empty cells
     marked with (0)
     """
-    global EMPTY_CELL
+    
 
     # If cell is empty
     if [r, col] not in EMPTY_CELL:
@@ -266,8 +271,7 @@ def main():
         that number of flags does not exceed number of mines
         """
         initialize_game_board()
-        player_input = input('''Enter a row number
-        followed by a space and column number = ''').split()
+        player_input = input('''Enter a row and column number = ''').split()
 
         # Standard player input check
         if len(player_input) == 2:
