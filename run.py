@@ -47,7 +47,8 @@ def instructions():
         3. Flag a mine by making a selection and adding "F"
         4. Hitting a mine results in game over!
         \n''')
-        
+    time.sleep(2)
+
 
 def initialize_game_board():
     """
@@ -55,8 +56,8 @@ def initialize_game_board():
     creates the game board using the value GRID_SIZE
     for columns and rows through the use of for loops
     """
-    print("    Game starting ... \n")
-    time.sleep(8)
+    print("    Game loading ... \n")
+    time.sleep(0.5)
     print()
     # Layout of Minesweeper game area
     cell_block = "   "
@@ -168,8 +169,6 @@ def adjoining_cells(r, col):
     This is a recursive function to display all empty cells
     marked with (0)
     """
-    
-
     # If cell is empty
     if [r, col] not in EMPTY_CELL:
 
@@ -294,7 +293,10 @@ def main():
                 print("Incorrect flag input.. try again")
                 instructions()
                 continue
-            if val[0] > GRID_SIZE or val[0] < 1 or val[1] > GRID_SIZE or val[1] < 1:
+            if (val[0] > GRID_SIZE
+                or val[0] < 1
+                or val[1] > GRID_SIZE
+                    or val[1] < 1):
                 print("Incorrect flag input.. try again")
                 instructions()
                 continue
@@ -327,7 +329,10 @@ def main():
             print("Incorrect flag input.. try again")
             instructions()
 
-        if val[0] > GRID_SIZE or val[0] < 1 or val[1] > GRID_SIZE or val[1] < 1:
+        if (val[0] > GRID_SIZE
+            or val[0] < 1
+            or val[1] > GRID_SIZE
+                or val[1] < 1):
             print("Incorrect flag input.. try again")
             instructions()
             continue
