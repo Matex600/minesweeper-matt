@@ -29,7 +29,7 @@ print("--------- Welcome to Minesweeper ---------")
 print(" --------- --------- --------- ---------")
 print("------ Start by entering username! ------")
 
-username = input()
+username = input(" \n")
 
 
 # Message after username input with game instructions
@@ -175,7 +175,7 @@ def terminate_game():
     while True:
         try:
             terminate_game_input = int(input('''Enter 1 to play again or
-                                                 2 to terminate game'''))
+                                                 2 to terminate game \n'''))
             if terminate_game_input == 1:
                 print("Ready to try again?")
                 time.sleep(2)
@@ -296,7 +296,7 @@ def main():
         that number of flags does not exceed number of mines
         """
         initialize_game_board()
-        player_input = input('''Enter a row and column number = ''').split()
+        player_input = input('''Enter a row and column number = \n''').split()
 
         # Standard player input check
         if len(player_input) == 2:
