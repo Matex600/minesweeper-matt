@@ -166,6 +166,30 @@ def actual_board_values():
                 numbers[row][col] = numbers[row][col] + 1
 
 
+def terminate_game():
+    """
+    Function that allows user to restart game
+    or terminate application
+    """
+
+    while True:
+        try:
+            terminate_game_input = int(input('''Enter 1 to play again or
+                                                 2 to terminate game'''))
+            if terminate_game_input == 1:
+                print("Ready to try again?")
+                time.sleep(2)
+                main()
+            if terminate_game_input == 2:
+                print("Thank you for playing")
+                time.sleep(2)
+                clear()
+                exit()
+        except ValueError:
+            print("This is an incorrect input.. please try again!")
+            terminate_game_input()
+
+
 def adjoining_cells(row, col):
     """
     This is a recursive function to display all empty cells
