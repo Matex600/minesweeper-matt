@@ -1,27 +1,26 @@
-# Imported modules
+"""
+Imported modules     describe file briefly.
+"""
 import random
 import os
 
-
 # Size of game grid (6x6)
-grid_size = 6
+GRID_SIZE = 10  # fix this
 
 #  Visible values of the grid
-mine_values = [[' ' for y in range(grid_size)] for x in range(grid_size)]
+mine_values = [[' ' for y in range(GRID_SIZE)] for x in range(GRID_SIZE)]
 
 # Actual (hidden) values of the grid
-numbers = [[0 for y in range(grid_size)] for x in range(grid_size)]
+numbers = [[0 for y in range(GRID_SIZE)] for x in range(GRID_SIZE)]
 
 # Tracking umber of mines already set starts at 0
-num_mines_present = 0
+NUM_MINES_PRESENT = 0
 
 # Number of mines in play grid
-max_mine_num = 6
+MAX_MINE_NUM = 10
 
 # Flagged positions
 flags = []
-
-global empty_cell
 
 
 # Welcome message and username prompt
@@ -48,7 +47,7 @@ def instructions():
 def initialize_game_board():
     """
     Function defines global variables and
-    creates the game board using the value j
+    creates the game board using the value GRID_SIZE
     for columns and rows through the use of for loops
     """
     print("    Game starting ... \n")
@@ -56,30 +55,30 @@ def initialize_game_board():
     print()
     # Layout of Minesweeper game area
     cell_block = "   "
-    for i in range(grid_size):
+    for i in range(GRID_SIZE):
         cell_block = cell_block + "     " + str(i + 1)
     print(cell_block)
 
     # For loop creates squares in the grid using | and _
-    for r in range(grid_size):
+    for r in range(GRID_SIZE):
         cell_block = "     "
         if r == 0:
-            for col in range(grid_size):
+            for col in range(GRID_SIZE):
                 cell_block = cell_block + "______"
             print(cell_block)
 
         cell_block = "     "
-        for col in range(grid_size):
+        for col in range(GRID_SIZE):
             cell_block = cell_block + "|     "
         print(cell_block + "|")
 
         cell_block = "  " + str(r + 1) + "  "
-        for col in range(grid_size):
+        for col in range(GRID_SIZE):
             cell_block = cell_block + "|  " + str(mine_values[r][col]) + "  "
         print(cell_block + "|")
 
         cell_block = "     "
-        for col in range(grid_size):
+        for col in range(GRID_SIZE):
             cell_block = cell_block + "|_____"
         print(cell_block + "|")
 
@@ -92,19 +91,19 @@ def inject_bombs():
     and flags
     """
 
-    num_mines_present = 0
-    while num_mines_present < max_mine_num:
+    NUM_MINES_PRESENT = 0
+    while NUM_MINES_PRESENT < MAX_MINE_NUM:
 
         # Random number for grid positions
-        grid_positions = random.randint(0, grid_size*grid_size - 1)
+        grid_positions = random.randint(0, GRID_SIZE*GRID_SIZE - 1)
 
         # Generate row and column from numbers in grid
-        r = grid_positions // grid_size
-        col = grid_positions % grid_size
+        r = grid_positions // GRID_SIZE
+        col = grid_positions % GRID_SIZE
 
         # Add a mine if there are none on the grid
         if numbers[r][col] != - 1:
-            num_mines_present = num_mines_present + 1
+            NUM_MINES_PRESENT = NUM_MINES_PRESENT + 1
             numbers[r][col] = - 1
 
 
@@ -116,8 +115,8 @@ def actual_board_values():
     """
 
     # Loop that counts every cell in the grid
-    for r in range(grid_size):
-        for col in range(grid_size):
+    for r in range(GRID_SIZE):
+        for col in range(GRID_SIZE):
           
             # Skips check if a mine is present
             if numbers[r][col] == - 1:
@@ -128,7 +127,7 @@ def actual_board_values():
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks input below
-            if r < grid_size-1 and numbers[r+1][col] == - 1:
+            if r < GRID_SIZE-1 and numbers[r+1][col] == - 1:
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks left input
@@ -136,7 +135,7 @@ def actual_board_values():
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks right input
-            if col < grid_size - 1 and numbers[r][col+1] == - 1:
+            if col < GRID_SIZE - 1 and numbers[r][col+1] == - 1:
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks top left input
@@ -144,52 +143,64 @@ def actual_board_values():
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks top right input
-            if r > 0 and col < grid_size - 1 and numbers[r-1][col+1] == - 1:
+            if r > 0 and col < GRID_SIZE - 1 and numbers[r-1][col+1] == - 1:
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks bottom left input
-            if r < grid_size - 1 and col > 0 and numbers[r+1][col-1] == - 1:
+            if r < GRID_SIZE - 1 and col > 0 and numbers[r+1][col-1] == - 1:
                 numbers[r][col] = numbers[r][col] + 1
 
             # Checks bottom right input
-            if (r < grid_size - 1
-                and col < grid_size - 1
+            if (r < GRID_SIZE - 1
+                and col < GRID_SIZE - 1
                     and numbers[r+1][col+1] == -1):
                 numbers[r][col] = numbers[r][col] + 1
 
 
-def adjoining_cells():
+def adjoining_cells(r, col):
     """
     This is a recursive function to display all empty cells
     marked with (0)
     """
-    global empty_cell
+    global EMPTY_CELL
+
     # If cell is empty
-    if [r, col] not in empty_cell:
-        empty_cell.append([r, col])
+    if [r, col] not in EMPTY_CELL:
+
+        # Mark visited cell
+        EMPTY_CELL.append([r, col])
+
         # 0 value cell
         if numbers[r][col] == 0:
+
             # Show user
-            mine_values[r][col] = numbers[r][col]
-            # Recursive for adjoining cells
+            # mine_values[r][col] = numbers[r][col]
+            # x = r-1
+            # y = col-1
+            # # Recursive for adjoining cells
+            # while x <= r+1:
+            #     while y <= col+1:
+            #         print()
+            #         y += 1
+            #     x += 1
             if r > 0:
                 adjoining_cells(r-1, col)
-            if r < grid_size-1:
+            if r < GRID_SIZE-1:
                 adjoining_cells(r+1, col)
             if col > 0:
                 adjoining_cells(r, col-1)
-            if col < grid_size-1:
+            if col < GRID_SIZE-1:
                 adjoining_cells(r, col+1)
             if r > 0 and col > 0:
                 adjoining_cells(r-1, col-1)
-            if r > 0 and col < grid_size-1:
+            if r > 0 and col < GRID_SIZE-1:
                 adjoining_cells(r-1, col+1)
-            if r < grid_size-1 and col > 0:
-                adjoining_cells()(r+1, col-1)
-            if r <grid_size-1 and col < grid_size-1:
+            if r < GRID_SIZE-1 and col > 0:
+                adjoining_cells(r+1, col-1)
+            if r < GRID_SIZE-1 and col < GRID_SIZE-1:
                 adjoining_cells(r+1, col+1)
         # If not empty cell
-        if number[r][col] != 0:
+        if numbers[r][col] != 0:
             mine_values[r][col] = numbers[r][col]
 
 
@@ -206,8 +217,8 @@ def display_mines():
     with a mine present
     """
 
-    for r in range(grid_size):
-        for col in range(grid_size):
+    for r in range(GRID_SIZE):
+        for col in range(GRID_SIZE):
             if numbers[r][col] == - 1:
                 mine_values[r][col] = 'M'
 
@@ -216,17 +227,17 @@ def check_game_concluded():
     """
     Function to check if game has conculded
     """
-    num_mines_present = 0
+    NUM_MINES_PRESENT = 0
 
     # Loop to check each square in grid
-    for r in range(grid_size):
-        for col in range(grid_size):
+    for r in range(GRID_SIZE):
+        for col in range(GRID_SIZE):
 
             # If the cell contains mine
             if mine_values[r][col] != ' ' and mine_values[r][col] != 'F':
-                num_mines_present = num_mines_present + 1
+                NUM_MINES_PRESENT = NUM_MINES_PRESENT + 1
 
-    if num_mines_present == grid_size * grid_size - max_mine_num:
+    if NUM_MINES_PRESENT == GRID_SIZE * GRID_SIZE - MAX_MINE_NUM:
         return True
     else:
         return False
@@ -237,7 +248,7 @@ def main():
     Main function that runs the game
     from start to end
     """
-    global empty_cell
+    global EMPTY_CELL
 
     instructions()
     inject_bombs()
@@ -278,7 +289,7 @@ def main():
                 print("Incorrect flag input.. try again")
                 instructions()
                 continue
-            if val[0] > grid_size or val[0] < 1 or val[1] > grid_size or val[1] < 1:
+            if val[0] > GRID_SIZE or val[0] < 1 or val[1] > GRID_SIZE or val[1] < 1:
                 print("Incorrect flag input.. try again")
                 instructions()
                 continue
@@ -295,7 +306,7 @@ def main():
                 print("This cell is already known")
                 continue
             # Checks number of flags
-            if len(flags) < max_mine_num:
+            if len(flags) < MAX_MINE_NUM:
                 print("You have set a flag!")
 
                 # Appending flag to list
@@ -311,7 +322,7 @@ def main():
             print("Incorrect flag input.. try again")
             instructions()
 
-        if val[0] > grid_size or val[0] < 1 or val[1] > grid_size or val[1] < 1:
+        if val[0] > GRID_SIZE or val[0] < 1 or val[1] > GRID_SIZE or val[1] < 1:
             print("Incorrect flag input.. try again")
             instructions()
             continue
@@ -325,7 +336,7 @@ def main():
 
         # Game over when landing on a mine check
         if numbers[r][col] == -1:
-            mine_values[r][col] = 'M' # M represents Mine
+            mine_values[r][col] = 'M'  # M represents Mine
             display_mines()
             initialize_game_board()
             print("You have hit a mine... Game over!")
@@ -333,7 +344,7 @@ def main():
             continue
         # If landing on a cell with no mines around it
         elif numbers[r][col] == 0:
-            empty_cell = []
+            EMPTY_CELL = []
             mine_values[r][col] = '0'
             adjoining_cells(r, col)
         # If landing on a cell with at least one adjoining_cells
@@ -348,6 +359,6 @@ def main():
             over = True
             continue
         clear()
-    
+
 
 main()
