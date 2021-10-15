@@ -14,14 +14,13 @@ mine_values = [[' ' for y in range(GRID_SIZE)] for x in range(GRID_SIZE)]
 # Actual (hidden) values of the grid
 numbers = [[0 for y in range(GRID_SIZE)] for x in range(GRID_SIZE)]
 
-# Tracking umber of mines already set starts at 0
-NUM_MINES_PRESENT = 0
-
 # Number of mines in play grid
 MAX_MINE_NUM = 8
 
 # Flagged positions
 flags = []
+
+EMPTY_CELL = []
 
 
 # Welcome message and username prompt
@@ -94,10 +93,10 @@ def inject_bombs():
     This function stores data and values from the mines
     and flags
     """
-    
-    NUM_MINES_PRESENT = 0
-    
-    while NUM_MINES_PRESENT < MAX_MINE_NUM:
+
+    num_mines_present = 0
+
+    while num_mines_present < MAX_MINE_NUM:
 
         # Random number for grid positions
         grid_positions = random.randint(0, GRID_SIZE*GRID_SIZE - 1)
@@ -108,7 +107,7 @@ def inject_bombs():
 
         # Add a mine if there are none on the grid
         if numbers[row][col] != - 1:
-            NUM_MINES_PRESENT = NUM_MINES_PRESENT + 1
+            num_mines_present = num_mines_present + 1
             numbers[row][col] = - 1
 
 
@@ -122,7 +121,7 @@ def actual_board_values():
     # Loop that counts every cell in the grid
     for row in range(GRID_SIZE):
         for col in range(GRID_SIZE):
-          
+
             # Skips check if a mine is present
             if numbers[row][col] == - 1:
                 continue
@@ -204,16 +203,6 @@ def adjoining_cells(row, col):
         # 0 value cell
         if numbers[row][col] == 0:
 
-            # Show user
-            # mine_values[r][col] = numbers[r][col]
-            # x = r-1
-            # y = col-1
-            # # Recursive for adjoining cells
-            # while x <= r+1:
-            #     while y <= col+1:
-            #         print()
-            #         y += 1
-            #     x += 1
             if row > 0:
                 adjoining_cells(row-1, col)
             if row < GRID_SIZE-1:
@@ -258,17 +247,16 @@ def check_game_concluded():
     """
     Function to check if game has conculded
     """
-    NUM_MINES_PRESENT = 0
-
+    num_mines_present = 0
     # Loop to check each square in grid
     for row in range(GRID_SIZE):
         for col in range(GRID_SIZE):
 
             # If the cell contains mine
             if mine_values[row][col] != ' ' and mine_values[row][col] != 'F':
-                NUM_MINES_PRESENT = NUM_MINES_PRESENT + 1
+                num_mines_present = num_mines_present + 1
 
-    if NUM_MINES_PRESENT == GRID_SIZE * GRID_SIZE - MAX_MINE_NUM:
+    if num_mines_present == GRID_SIZE * GRID_SIZE - MAX_MINE_NUM:
         return True
     else:
         return False
@@ -310,20 +298,20 @@ def main():
         # Flag input check
         elif len(player_input) == 3:
             if player_input[2] != 'F' and player_input[2] != 'f':
-                print("Incorrect flag input.. try again")
+                print("Incorrect input.. try again")
                 instructions()
                 continue
             try:
                 val = list(map(int, player_input[:2]))
             except ValueError:
-                print("Incorrect flag input.. try again")
+                print("Incorrect input.. try again")
                 instructions()
                 continue
             if (val[0] > GRID_SIZE
                 or val[0] < 1
                 or val[1] > GRID_SIZE
                     or val[1] < 1):
-                print("Incorrect flag input.. try again")
+                print("Incorrect input.. try again")
                 instructions()
                 continue
             # Getting row and column numbers
@@ -377,6 +365,7 @@ def main():
             initialize_game_board()
             print("You have hit a mine... Game over!")
             over = True
+            terminate_game()
             continue
         # If landing on a cell with no mines around it
         elif numbers[row][col] == 0:
@@ -393,6 +382,7 @@ def main():
             initialize_game_board()
             print("Well done.. you have won! :)")
             over = True
+            terminate_game()
             continue
         clear()
 
