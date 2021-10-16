@@ -299,27 +299,31 @@ def main():
         """
         initialize_game_board()
 
-        player_input = input('''Enter a row and column number = \n''').split()
+        player_input = input("Enter a row and column number = \n").split()
 
         # Standard player input check
         if len(player_input) == 2:
             try:
                 val = list(map(int, player_input))
                 print("Input selected: ", player_input)
+                time.sleep(1)
             except ValueError:
                 print("Input is incorrect.. please make correct selection")
+                time.sleep(1)
                 instructions()
                 continue
         # Flag input check
         elif len(player_input) == 3:
             if player_input[2] != 'F' and player_input[2] != 'f':
                 print("Incorrect input.. try again")
+                time.sleep(1)
                 instructions()
                 continue
             try:
                 val = list(map(int, player_input[:2]))
             except ValueError:
                 print("Incorrect input.. try again")
+                time.sleep(1)
                 instructions()
                 continue
             if (val[0] > GRID_SIZE
@@ -327,6 +331,7 @@ def main():
                 or val[1] > GRID_SIZE
                     or val[1] < 1):
                 print("Incorrect input.. try again")
+                time.sleep(1)
                 instructions()
                 continue
             # Getting row and column numbers
@@ -336,14 +341,17 @@ def main():
             # If grid cell already flagged by user
             if [row, col] in flags:
                 print("This cell has already been flagged")
+                time.sleep(1)
                 continue
             # If grid cell already displayed to user
             if MINE_VALUES[row][col] != ' ':
                 print("This cell is already known")
+                time.sleep(1)
                 continue
             # Checks number of flags
             if len(flags) < MAX_MINE_NUM:
                 print("You have set a flag!")
+                time.sleep(1)
 
                 # Appending flag to list
                 flags.append([row, col])
@@ -353,13 +361,16 @@ def main():
                 continue
             else:
                 print("Flags finished")
+                time.sleep(1)
                 continue
         else:
             print("Incorrect input.. try again")
+            time.sleep(1)
             instructions()
 
         if val[0] > GRID_SIZE or val[0] < 1 or val[1] > GRID_SIZE or val[1] < 1:
             print("Incorrect input.. try again")
+            time.sleep(1)
             instructions()
             continue
         # Get row and column numbers
@@ -376,6 +387,7 @@ def main():
             display_mines()
             initialize_game_board()
             print("You have hit a mine... Game over!")
+            time.sleep(1)
             over = True
             terminate_game()
             continue
@@ -394,6 +406,7 @@ def main():
             display_mines()
             initialize_game_board()
             print("Well done.. you have won! :)")
+            time.sleep(1)
             over = True
             terminate_game()
             continue
