@@ -10,6 +10,11 @@
 
 This is a back end application with a purpose of creating a game of minesweeper in command-line using Python3.
 
+Minesweeper is run in code institutes custom terminal running on the [Heroku](https://www.heroku.com/home) platform.
+
+[Click here to access and play!](https://minesweeper-matt.herokuapp.com/)
+
+(I recommend users to open links in this README with CTRL + left mouse button (Windows) Control + click, for Mac)
 # UX
 ## User stories
 
