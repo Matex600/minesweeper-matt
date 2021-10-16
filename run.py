@@ -309,21 +309,21 @@ def main():
                 time.sleep(1)
             except ValueError:
                 print("Input is incorrect.. please make correct selection")
-                time.sleep(1)
+                time.sleep(2)
                 instructions()
                 continue
         # Flag input check
         elif len(player_input) == 3:
             if player_input[2] != 'F' and player_input[2] != 'f':
                 print("Incorrect input.. try again")
-                time.sleep(1)
+                time.sleep(2)
                 instructions()
                 continue
             try:
                 val = list(map(int, player_input[:2]))
             except ValueError:
                 print("Incorrect input.. try again")
-                time.sleep(1)
+                time.sleep(2)
                 instructions()
                 continue
             if (val[0] > GRID_SIZE
@@ -331,7 +331,7 @@ def main():
                 or val[1] > GRID_SIZE
                     or val[1] < 1):
                 print("Incorrect input.. try again")
-                time.sleep(1)
+                time.sleep(2)
                 instructions()
                 continue
             # Getting row and column numbers
@@ -341,17 +341,17 @@ def main():
             # If grid cell already flagged by user
             if [row, col] in flags:
                 print("This cell has already been flagged")
-                time.sleep(1)
+                time.sleep(2)
                 continue
             # If grid cell already displayed to user
             if MINE_VALUES[row][col] != ' ':
                 print("This cell is already known")
-                time.sleep(1)
+                time.sleep(2)
                 continue
             # Checks number of flags
             if len(flags) < MAX_MINE_NUM:
                 print("You have set a flag!")
-                time.sleep(1)
+                time.sleep(2)
 
                 # Appending flag to list
                 flags.append([row, col])
@@ -361,16 +361,17 @@ def main():
                 continue
             else:
                 print("Flags finished")
-                time.sleep(1)
+                time.sleep(2)
                 continue
         else:
             print("Incorrect input.. try again")
-            time.sleep(1)
+            time.sleep(2)
             instructions()
 
-        if val[0] > GRID_SIZE or val[0] < 1 or val[1] > GRID_SIZE or val[1] < 1:
+        if (val[0] > GRID_SIZE or val[0] < 1
+                or val[1] > GRID_SIZE or val[1] < 1):
             print("Incorrect input.. try again")
-            time.sleep(1)
+            time.sleep(2)
             instructions()
             continue
         # Get row and column numbers
