@@ -24,11 +24,16 @@ flags = []
 
 
 # Welcome message and username prompt
-print("--------- Welcome to Minesweeper ---------")
-print(" --------- --------- --------- ---------")
-print("------ Start by entering username! ------")
-
-username = input(" \n")
+def enter_username():
+    """
+    Function for username input
+    """
+    print("--------- Welcome to Minesweeper ---------")
+    print(" --------- --------- --------- ---------")
+    print("------ Start by entering username! ------")
+    username = input(" \n")
+    print("----- Welcome, " + username + ", good luck & have fun! -----\n")
+    return username
 
 
 # Message after username input with game instructions
@@ -36,7 +41,6 @@ def instructions():
     """
     Game instruction function
     """
-    print("----- Welcome, " + username + ", good luck & have fun! -----\n")
     print('''Game instructions! \n
         1. Game board contains 8 rows, columns and mines.
         2. Enter a number between 1 and 8 for row
@@ -178,7 +182,6 @@ def terminate_game():
             if terminate_game_input == 1:
                 print("Ready to try again?")
                 time.sleep(2)
-                clear()
                 main()
             if terminate_game_input == 2:
                 print("Thank you for playing")
@@ -254,7 +257,6 @@ def check_game_concluded():
     # Loop to check each square in grid
     for row in range(GRID_SIZE):
         for col in range(GRID_SIZE):
-
             # If the cell contains mine
             if mine_values[row][col] != ' ' and mine_values[row][col] != 'F':
                 num_mines_present = num_mines_present + 1
@@ -270,7 +272,7 @@ def main():
     Main function that runs the game
     from start to end
     """
-
+    enter_username()
     instructions()
     inject_bombs()
     actual_board_values()
@@ -292,7 +294,7 @@ def main():
         if len(player_input) == 2:
             try:
                 val = list(map(int, player_input))
-                print("Input selected...", player_input)
+                print("Input selected: ", player_input)
             except ValueError:
                 print("Input is incorrect.. please make correct selection")
                 instructions()
@@ -342,12 +344,12 @@ def main():
                 print("Flags finished")
                 continue
         else:
-            print("Incorrect flag input.. try again")
+            print("Incorrect input.. try again")
             instructions()
 
         if (val[0] > GRID_SIZE or val[0] < 1
                 or val[1] > GRID_SIZE or val[1] < 1):
-            print("Incorrect flag input.. try again")
+            print("Incorrect input.. try again")
             instructions()
             continue
         # Get row and column numbers
@@ -387,5 +389,5 @@ def main():
             continue
         clear()
 
-
+# Calling main function to run game
 main()
