@@ -20,7 +20,7 @@ MAX_MINE_NUM = 8
 # Flagged positions
 flags = []
 
-EMPTY_CELL = []
+# EMPTY_CELL = []
 
 
 # Welcome message and username prompt
@@ -173,11 +173,12 @@ def terminate_game():
 
     while True:
         try:
-            terminate_game_input = int(input('''Enter 1 to play again or
-                                                 2 to terminate game \n'''))
+            terminate_game_input = int(
+                input("Enter 1 to play again or 2 to terminate game \n"))
             if terminate_game_input == 1:
                 print("Ready to try again?")
                 time.sleep(2)
+                clear()
                 main()
             if terminate_game_input == 2:
                 print("Thank you for playing")
@@ -194,6 +195,7 @@ def adjoining_cells(row, col):
     This is a recursive function to display all empty cells
     marked with (0)
     """
+
     # If cell is empty
     if [row, col] not in EMPTY_CELL:
 
@@ -202,6 +204,7 @@ def adjoining_cells(row, col):
 
         # 0 value cell
         if numbers[row][col] == 0:
+            mine_values[row][col] = numbers[row][col]
 
             if row > 0:
                 adjoining_cells(row-1, col)
@@ -267,7 +270,6 @@ def main():
     Main function that runs the game
     from start to end
     """
-    global EMPTY_CELL
 
     instructions()
     inject_bombs()
@@ -343,10 +345,8 @@ def main():
             print("Incorrect flag input.. try again")
             instructions()
 
-        if (val[0] > GRID_SIZE
-            or val[0] < 1
-            or val[1] > GRID_SIZE
-                or val[1] < 1):
+        if (val[0] > GRID_SIZE or val[0] < 1
+                or val[1] > GRID_SIZE or val[1] < 1):
             print("Incorrect flag input.. try again")
             instructions()
             continue
@@ -369,6 +369,7 @@ def main():
             continue
         # If landing on a cell with no mines around it
         elif numbers[row][col] == 0:
+            global EMPTY_CELL
             EMPTY_CELL = []
             mine_values[row][col] = '0'
             adjoining_cells(row, col)
