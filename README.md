@@ -16,7 +16,7 @@ Minesweeper is run in code institutes custom terminal running on the [Heroku](ht
 [Click here to access and play!](https://minesweeper-matt.herokuapp.com/)
 -
 <br>
-(I recommend users to open links in this README with CTRL + left mouse button (Windows) Control + click, for Mac)
+( I recommend users to open links in this README with CTRL + left mouse button (Windows) Control + click, for Mac)
 
 To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) - Click here!!
 
@@ -24,17 +24,29 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 - [UX](#ux)
   * [User stories](#user-stories)
   * [Features](#features)
+  * [Future Features](#future-features)
 - [Application design](#application-design)
+  * [Game instructions](#game-instructions)
+  * [Game Logic and Features](#game-logic-and-features)
 - [Planning](#planning)
 - [Technologies Used](#technologies-used)
+  * [Coding Languages](#coding-languages)
+  * [Libraries](#libraries)
 - [Testing](#testing)
-- [Validation](#validation)
+  * [Purpose and functionality testing](#purpose-and-functionality-testing)
+  * [User Testing](#user-testing)
+  * [Bugs and errors and validation](#bugs-and-errors-and-validation)
+    + [After fixing Pep 8 error](#after-fixing-pep-8-error)
 - [Site Deployment](#site-deployment)
+  * [Cloning using Github](#cloning-using-github)
+  * [Deployment via Heroku](#deployment-via-heroku)
 - [Credits](#credits)
-- [Media](#media)
-- [Acknowledgements](#acknowledgements)
-# UX
+  * [Media](#media)
+  * [Acknowledgements](#acknowledgements)
 
+# UX
+[Back to top](#)
+-
 ## User stories
 * New Users
     1. As a new user I want the game rules to be digestable.
@@ -54,6 +66,9 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 * Randomised Mine placement
 * Flagging mines
 * Game Restart
+
+[Back to top](#)
+-
 ## Future Features
 * Game time elapsed
 * Improve scaleability of game board
@@ -69,39 +84,64 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 4. Repeat above actions until game completed or you hit a mine.
 5. If you lose you are prompted to enter '1' for restart and '2' to terminate app.
 
+
 ## Game Logic and Features
+
+[Back to top](#)
+-
+
 * User is asked for username.
+
 ![Username](assets/readme_files/Username.PNG)
 
 * User is asked to select difficulty.
+
 ![Difficulty](assets/readme_files/Difficulty.PNG)
 
 * App checks input and if either 4, 6 or 8 selects a difficulty.
+
 ![SelectDifficulty](assets/readme_files/SelectDifficulty.PNG)
 
 * User is displayed game board size depending on difficulty.
+
 ![DisplayGameBoard](assets/readme_files/GameboardDisplay.PNG)
+
+[Back to top](#)
+-
 
 * Bombs are injected onto the game board and are hidden from user unless they hit one. 
 
 ![Mine](assets/readme_files/Mine.PNG)
 
 * User is asked for input.
+
 ![UserInput](assets/readme_files/PlayerInput.PNG)
 
 * App checks if the input is correct and marks a cell in game board
+
 ![Checkinput](assets/readme_files/CheckInput.PNG)
+
 ![MarkGameBoard](assets/readme_files/MarkGameBoard.PNG)
 
 * App checks for flag inputs and lets user flag cells
+
 ![SetFlag](assets/readme_files/SetFlag.PNG)
 
+[Back to top](#)
+-
+
 * The App loops until a mine is hit by the player resulting in Game over!!
+
 ![GameOver](assets/readme_files/GameOver.PNG)
 
 * User is prompted to Restart or Terminate game
+
 ![GameRestart](assets/readme_files/GameRestart.PNG)
+
 ![TerminateGame](assets/readme_files/TerminateGame.PNG)
+
+[Back to top](#)
+-
 
 # Planning
 * My first overall ideas for planning was to display a welcome message to the user with the name of the application.
@@ -114,6 +154,9 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 
 ![Lucid-Chart](assets/readme_files/Plan_with_lucid_chart.PNG)
 # Technologies Used
+
+[Back to top](#)
+-
 
 ## Coding Languages
 ---
@@ -136,6 +179,9 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 * [Python os](https://docs.python.org/3/library/os.html). - Used for clearing the terminal.
 
 # Testing
+
+[Back to top](#)
+-
 
 ## Purpose and functionality testing
 
@@ -161,6 +207,9 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 
 ![Pep8](assets/readme_files/Pep8.png)
 
+[Back to top](#)
+-
+
 # Site Deployment 
 * Deploying project to Heroku - [Live Link](https://minesweeper-matt.herokuapp.com/)
 
@@ -180,6 +229,9 @@ git clone https://github.com/Matex600/minesweeper-matt
 * This command will now clone this repo for use in your Gitpod.
 * In Gitpod workspaces click the three dots and pin workspace to avoid losing it!
 * Do not use the Gitpod button in Github again when you have your workspace already set up to avoid losing data.
+
+[Back to top](#)
+-
 
 ## Deployment via Heroku
 * Go to [Heroku](https://www.heroku.com/home).
@@ -220,3 +272,6 @@ My mentor Maranatha Ilesanmi has helped motivate me throughout this project and 
 [FreeCodeCamp](https://www.youtube.com/watch?v=rfscVS0vtbw) - For helping me understand Python further.
 
 [Lucid Chart](https://www.lucidchart.com/pages/examples/flowchart-maker) - For helping my map out my code logic
+
+[Back to top](#)
+-
