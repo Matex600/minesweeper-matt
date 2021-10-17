@@ -71,10 +71,45 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 
     * This project was created with Code institutes Portfolio 3 template.
 
-## Clone Repo using Github
-* Log in to Github
+## Cloning using Github
+* Log in to Github.
 * Access my repository using above link.
+* In repository page select code next to Gitpod.
+* Button, make sure HTTPS is selected.
+* Click on the copy button on the right (Two overlapping squares)
+* Open a new workspace in Gitpod.
+* Once the workspace loads in the terminal type.
+```
+git clone https://github.com/Matex600/minesweeper-matt
+```
+* This command will now clone this repo for use in your Gitpod.
+* In Gitpod workspaces click the three dots and pin workspace to avoid losing it!
+* Do not use the Gitpod button in Github again when you have your workspace already set up to avoid losing data.
 
+## Deployment via Heroku
+* Go to [Heroku](https://www.heroku.com/home).
+* Log in to your account.
+* Once in your Dashboard, Create new app
+* Select an app name and a region and press create app
+* You have now created a Heroku app
+* Navigate to the settings tab
+* Click on the Reveal Config Vars button
+* If you have a creds.json file in gitpod add a 
+Key with name CREDS
+* In the Value section copy and paste contents from creds.json file.
+* For the second key this one is required for the app to work once deployed
+* In Key enter PORT for Value enter 8000.
+* Select Add
+* Scroll down to Buildpacks section
+* Once in this section click on Add Buildpack, Select Python
+* Repeat above action but select node.js instead.
+* Once this is completed Ensure that Python is above node.js within the list.
+* Navigate to the Deploy tab
+* In the deployment section select Github
+* Enter the Repo name and once you have found the corresponding repo confirm the selection.
+* Scroll down to Enable Automatic Deploys and enable this feature to ensure automatic updates everytime you use git push in gitpod.
+* Lastly to deploy click on deploy branch in manual deploy this could take up to a few minutes.
+* Once deployed successfully a message will appear and a View button taking you to the deployed app if nothing is showing allow some time for Heroku to work.
 
 # Credits
 
