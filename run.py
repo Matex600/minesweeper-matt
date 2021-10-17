@@ -33,7 +33,7 @@ def instructions():
           4. Hitting a mine results in game over!''')
 
     print("    Game loading ... \n")
-    time.sleep(2)
+    time.sleep(3)
 
 
 def game_difficulty():
@@ -205,6 +205,7 @@ def terminate_game():
                 main()
             if terminate_game_input == 2:
                 print("Thank you for playing")
+                print("To play again click Run Program")
                 time.sleep(2)
                 clear()
                 sys.exit()
