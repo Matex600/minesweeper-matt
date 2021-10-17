@@ -69,6 +69,25 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 ![Lucid-Chart](assets/readme_files/Plan_with_lucid_chart.PNG)
 # Technologies Used
 
+## Coding Languages
+---
+* [HTML5](https://en.wikipedia.org/wiki/HTML5). - Site structure.
+
+* [CSS3](https://en.wikipedia.org/wiki/CSS). - Site Design
+
+* [JavaScript](https://en.wikipedia.org/wiki/JavaScript). - Used to build the template supplied by Code Institute.
+
+* [Python3](https://en.wikipedia.org/wiki/Python_(programming_language)). - Main language used for game logic and code.
+
+* [Markdown](https://en.wikipedia.org/wiki/Markdown). - Used for Writing this README document.
+
+## Libraries
+---
+* [Python Time](https://docs.python.org/3/library/time.html). - Used for Time.sleep to delay code and help return input to user.
+
+* [Python Random](https://docs.python.org/3/library/random.html). - Used for randomising the game board with mine placement.
+
+* [Python os](https://docs.python.org/3/library/os.html). - Used for clearing the terminal.
 # Testing
 
 # Validation
