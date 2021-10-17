@@ -12,9 +12,27 @@ This is a back end application with a purpose of creating a game of minesweeper 
 
 Minesweeper is run in code institutes custom terminal running on the [Heroku](https://www.heroku.com/home) platform.
 
-[Click here to access and play!](https://minesweeper-matt.herokuapp.com/)
 
+[Click here to access and play!](https://minesweeper-matt.herokuapp.com/)
+-
+<br>
 (I recommend users to open links in this README with CTRL + left mouse button (Windows) Control + click, for Mac)
+
+To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) - Click here!!
+
+# Content Navigation
+- [UX](#ux)
+  * [User stories](#user-stories)
+  * [Features](#features)
+- [Application design](#application-design)
+- [Planning](#planning)
+- [Technologies Used](#technologies-used)
+- [Testing](#testing)
+- [Validation](#validation)
+- [Site Deployment](#site-deployment)
+- [Credits](#credits)
+- [Media](#media)
+- [Acknowledgements](#acknowledgements)
 # UX
 
 ## User stories
@@ -38,6 +56,7 @@ Minesweeper is run in code institutes custom terminal running on the [Heroku](ht
 * Game Restart 
 
 # Application design
+
 
 # Planning
 
