@@ -80,6 +80,7 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 ![DisplayGameBoard](assets/readme_files/GameboardDisplay.PNG)
 * Bombs are injected onto the game board and are hidden from user unless they hit one
 * User is asked for input.
+![UserInput](assets/readme_files/PlayerInput.PNG)
 * App checks if the input is correct and marks a cell in game board
 * 
 

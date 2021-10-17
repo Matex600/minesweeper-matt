@@ -6,6 +6,7 @@ import os
 import time
 import sys
 
+
 # Welcome message and username prompt
 def enter_username():
     """
@@ -26,9 +27,9 @@ def instructions():
     """
     print('''Game instructions!
           1. Game size depends on difficulty
-          2. Enter a number between 1 and 8 for row
-          and column. (Example: '3 5' '3 5 F')
-          3. Flag a mine by making a selection and adding 'F' 
+          2. Enter a number between 1-4, 1-6, 1-8 for row
+          and column depending on game size. (Example: '3 5' '3 5 F')
+          3. Flag a mine by making a selection and adding 'F'
           4. Hitting a mine results in game over!''')
 
     print("    Game loading ... \n")
