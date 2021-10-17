@@ -72,17 +72,36 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 ## Game Logic and Features
 * User is asked for username.
 ![Username](assets/readme_files/Username.PNG)
+
 * User is asked to select difficulty.
 ![Difficulty](assets/readme_files/Difficulty.PNG)
+
 * App checks input and if either 4, 6 or 8 selects a difficulty.
 ![SelectDifficulty](assets/readme_files/SelectDifficulty.PNG)
+
 * User is displayed game board size depending on difficulty.
 ![DisplayGameBoard](assets/readme_files/GameboardDisplay.PNG)
-* Bombs are injected onto the game board and are hidden from user unless they hit one
+
+* Bombs are injected onto the game board and are hidden from user unless they hit one. 
+
+![Mine](assets/readme_files/Mine.PNG)
+
 * User is asked for input.
 ![UserInput](assets/readme_files/PlayerInput.PNG)
+
 * App checks if the input is correct and marks a cell in game board
-* 
+![Checkinput](assets/readme_files/CheckInput.PNG)
+![MarkGameBoard](assets/readme_files/MarkGameBoard.PNG)
+
+* App checks for flag inputs and lets user flag cells
+![SetFlag](assets/readme_files/SetFlag.PNG)
+
+* The App loops until a mine is hit by the player resulting in Game over!!
+![GameOver](assets/readme_files/GameOver.PNG)
+
+* User is prompted to Restart or Terminate game
+![GameRestart](assets/readme_files/GameRestart.PNG)
+![TerminateGame](assets/readme_files/TerminateGame.PNG)
 
 # Planning
 * My first overall ideas for planning was to display a welcome message to the user with the name of the application.
