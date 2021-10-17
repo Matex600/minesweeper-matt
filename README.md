@@ -88,10 +88,32 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 * [Python Random](https://docs.python.org/3/library/random.html). - Used for randomising the game board with mine placement.
 
 * [Python os](https://docs.python.org/3/library/os.html). - Used for clearing the terminal.
+
 # Testing
 
-# Validation
+## Purpose and functionality testing
 
+* I tested my code where possible during development in Gitpod and fixed errors when they appeared in terminal where possible.
+* I also used Python tutor to write out functions to make sure they worked first before implementing into gitpod this sometimes provided unexpected results which had to be further tweaked in the Gitpod environment.
+
+## User Testing
+
+* I have asked some friends and fellow students from slack to test my minesweeper game by play testing the application.
+
+* An issue where the game was restarting with a game board still filled with values from previous playthrough and not showing a cleared game board was resolved by using global variables and then defining the values in main(): which fixed the issue and enabled the game to restart as intended.
+
+* I was also recommended to change some print statement wording and layouts to improve readability and make the terminal look cleaner and appear on one line where possible.
+
+## Bugs and errors and validation
+
+* I encountered an error with Pep8 while trying to fix a line too long error with my code.
+* I have receieved an error code W503 in Pep8 with "line break before binary operator" due to wrapping my code with brackets and making it multi line on lines shown in the image below.
+
+![Pep8Error](assets/readme_files/Pep8Error.png)
+
+### After fixing Pep 8 error
+
+![Pep8](assets/readme_files/Pep8.png)
 
 # Site Deployment 
 * Deploying project to Heroku - [Live Link](https://minesweeper-matt.herokuapp.com/)

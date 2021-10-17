@@ -141,21 +141,20 @@ def actual_board_values():
                 NUMBERS[row][col] = NUMBERS[row][col] + 1
 
             # Checks top right input
-            if (row > 0
-                and col < GRID_SIZE - 1
-                    and NUMBERS[row-1][col+1] == - 1):
+            if (row > 0 and
+                col < GRID_SIZE - 1 and
+                NUMBERS[row-1][col+1] == - 1):
                 NUMBERS[row][col] = NUMBERS[row][col] + 1
 
             # Checks bottom left input
-            if (row < GRID_SIZE - 1
-                and col > 0
-                    and NUMBERS[row+1][col-1] == - 1):
+            if (row < GRID_SIZE - 1 and col > 0 and
+                    NUMBERS[row+1][col-1] == - 1):
                 NUMBERS[row][col] = NUMBERS[row][col] + 1
 
             # Checks bottom right input
-            if (row < GRID_SIZE - 1
-                and col < GRID_SIZE - 1
-                    and NUMBERS[row+1][col+1] == -1):
+            if (row < GRID_SIZE - 1 and
+                col < GRID_SIZE - 1 and
+                    NUMBERS[row+1][col+1] == -1):
                 NUMBERS[row][col] = NUMBERS[row][col] + 1
 
 
@@ -326,10 +325,10 @@ def main():
                 time.sleep(2)
                 instructions()
                 continue
-            if (val[0] > GRID_SIZE
-                or val[0] < 1
-                or val[1] > GRID_SIZE
-                    or val[1] < 1):
+            if (val[0] > GRID_SIZE or
+                val[0] < 1 or
+                    val[1] > GRID_SIZE or
+                    val[1] < 1):
                 print("Incorrect input.. try again")
                 time.sleep(2)
                 instructions()
@@ -368,8 +367,9 @@ def main():
             time.sleep(2)
             instructions()
 
-        if (val[0] > GRID_SIZE or val[0] < 1
-                or val[1] > GRID_SIZE or val[1] < 1):
+        if (val[0] > GRID_SIZE or val[0] < 1 or
+            val[1] > GRID_SIZE or
+                val[1] < 1):
             print("Incorrect input.. try again")
             time.sleep(2)
             instructions()
