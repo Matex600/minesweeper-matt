@@ -1,7 +1,7 @@
 # Minesweeper 
 
 ## Python 3 Project by Mateusz Leks
-
+---
 <br>
 
 ![ami.responsive](assets/readme_files/ami.responsivep3.png)
@@ -19,16 +19,24 @@ Minesweeper is run in code institutes custom terminal running on the [Heroku](ht
 
 ## User stories
 * New Users
-1. As a new user I want the game rules to be digestable.
-2. As a new user I want to receieve input on my actions.
-3. 
-4. 
+    1. As a new user I want the game rules to be digestable.
+    2. As a new user I want to receieve feedback in terminal for my input.
+    3. As a new user I want to play a clearly laid out game.
+    4. As a new user I want to be able to restart the game or quit if I wish.
+
 * Returning Users
-1. 
-2. 
-3. 
-4. 
+    1. As a returning user I want to see updated features and bug fixes.
+    2. As a returning user I want to see more difficulty options to further test my skils.
+    3. As a returning user I want to be able to time a playthrough.
+    4. As a returning user I want to see a high scores / game score feature.
+
 ## Features
+* Username selection
+* Randomised Game grid
+* Randomised Mine placement
+* Flagging mines
+* Game Restart 
+
 # Application design
 
 # Planning
