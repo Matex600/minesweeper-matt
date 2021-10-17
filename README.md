@@ -67,9 +67,26 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 # Validation
 
 # Site Deployment 
+* Deploying project to Heroku - [Live Link](https://minesweeper-matt.herokuapp.com/)
+
+    * This project was created with Code institutes Portfolio 3 template.
+
+## Clone Repo using Github
+* Log in to Github
+* Access my repository using above link.
+
 
 # Credits
 
-# Media
+## Media
+[amiresponsive](http://ami.responsivedesign.is/) - For use of their site to add image to top of my README.
 
-# Acknowledgements
+## Acknowledgements
+
+My mentor Maranatha Ilesanmi has helped motivate me throughout this project and offer useful advice on how to further improve my knowledge.
+
+[Code Institute](https://codeinstitute.net/) - For providing me with learning material that has prepared me for this Python in terminal project.
+
+[FreeCodeCamp](https://www.youtube.com/watch?v=rfscVS0vtbw) - For helping me understand Python further.
+
+[Lucid Chart](https://www.lucidchart.com/pages/examples/flowchart-maker) - For helping my map out my code logic
