@@ -36,6 +36,37 @@ def instructions():
     time.sleep(2)
 
 
+def game_difficulty():
+    """
+    Function lets user decide game difficulty
+    """
+    print("Select game difficulty!")
+    while True:
+        game_difficulty_input = input(
+                  "Enter 4 for Easy"
+                  " 6 for Standard"
+                  " 8 for Hard \n")
+        try:
+            if (int(game_difficulty_input) not in [4, 6, 8]):
+                raise ValueError
+            else:
+                if int(game_difficulty_input) == 4:
+                    print("You have chosen Easy difficulty")
+                elif int(game_difficulty_input) == 6:
+                    print("You have chosen Standard difficulty")
+                elif int(game_difficulty_input) == 8:
+                    print("You have chosen Hard difficulty")
+                time.sleep(2)
+                global GRID_SIZE
+                GRID_SIZE = int(game_difficulty_input)
+                global MAX_MINE_NUM
+                MAX_MINE_NUM = int(game_difficulty_input)
+                break
+        except ValueError:
+            print("Input is incorrect.. please make correct selection")
+            time.sleep(2)
+
+
 def initialize_game_board():
     """
     Function defines global variables and
@@ -143,7 +174,7 @@ def actual_board_values():
             # Checks top right input
             if (row > 0 and
                 col < GRID_SIZE - 1 and
-                NUMBERS[row-1][col+1] == - 1):
+                    NUMBERS[row-1][col+1] == - 1):
                 NUMBERS[row][col] = NUMBERS[row][col] + 1
 
             # Checks bottom left input
@@ -282,6 +313,7 @@ def main():
     flags = []
 
     enter_username()
+    game_difficulty()
     instructions()
     inject_bombs()
     actual_board_values()
