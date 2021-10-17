@@ -57,14 +57,22 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 
 # Application design
 
-
 # Planning
+* My first overall ideas for planning was to display a welcome message to the user with the name of the application.
+* Then the user inputs name and they get an input return.
+* The next part in the logic would be to initialize the game board with rows and colums that are numbered to help user input their moves.
+* After displaying the board I inject the bombs into the grid which are hidden to the user until they hit a cell with one in it.
+* The user then is asked to input row and column which the code then checks and sees if there is a bomb or if its an empty cell also providing information on where the next bomb could be with numbers.
+* The game continues until a bomb has been hit in a loop.
+* If the user hits a bomb they are asked if they would like to restart which restarts the whole game from beginning, if the user chooses to terminate the game is closed.
 
+![Lucid-Chart](assets/readme_files/Plan_with_lucid_chart.PNG)
 # Technologies Used
 
 # Testing
 
 # Validation
+
 
 # Site Deployment 
 * Deploying project to Heroku - [Live Link](https://minesweeper-matt.herokuapp.com/)
