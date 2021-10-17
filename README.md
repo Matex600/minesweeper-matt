@@ -64,12 +64,25 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 ## Game instructions
 1. Enter Username.
 2. Select difficulty from 4 (Easy) 6 (Standard) 8 (Hard).
+    * Game board size depends on difficulty.. Example (4) gives 4 rows, columns and mines. 
 3. Enter Row and column input.. Example '3 5' to flag a cell.. Example '3 5 F'.
 4. Repeat above actions until game completed or you hit a mine.
 5. If you lose you are prompted to enter '1' for restart and '2' to terminate app.
 
-## Game Logic
+## Game Logic and Features
+* User is asked for username.
+![Username](assets/readme_files/Username.PNG)
+* User is asked to select difficulty.
+![Difficulty](assets/readme_files/Difficulty.PNG)
+* App checks input and if either 4, 6 or 8 selects a difficulty.
+![SelectDifficulty](assets/readme_files/SelectDifficulty.PNG)
+* User is displayed game board size depending on difficulty.
+![DisplayGameBoard](assets/readme_files/GameboardDisplay.PNG)
+* Bombs are injected onto the game board and are hidden from user unless they hit one
+* User is asked for input.
+* App checks if the input is correct and marks a cell in game board
 * 
+
 # Planning
 * My first overall ideas for planning was to display a welcome message to the user with the name of the application.
 * Then the user inputs name and they get an input return.

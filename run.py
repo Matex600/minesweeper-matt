@@ -4,7 +4,7 @@ Imported modules     describe file briefly.
 import random
 import os
 import time
-
+import sys
 
 # Welcome message and username prompt
 def enter_username():
@@ -206,7 +206,7 @@ def terminate_game():
                 print("Thank you for playing")
                 time.sleep(2)
                 clear()
-                exit()
+                sys.exit()
         except ValueError:
             print("This is an incorrect input.. please try again!")
             terminate_game_input()
