@@ -53,10 +53,20 @@ To find out more about [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(
 * Randomised Game grid
 * Randomised Mine placement
 * Flagging mines
-* Game Restart 
+* Game Restart
+## Future Features
+* Game time elapsed
+* Improve scaleability of game board
+  to support larger game boards.
 
 # Application design
 
+## Game instructions
+1. Enter Username.
+2. Select difficulty from 4 (Easy) 6 (Standard) 8 (Hard).
+3. Enter Row and column input.. Example '3 5' to flag a cell.. Example '3 5 F'.
+4. Repeat above actions until game completed or you hit a mine.
+5. If you lose you are prompted to enter '1' for restart and '2' to terminate app.
 # Planning
 * My first overall ideas for planning was to display a welcome message to the user with the name of the application.
 * Then the user inputs name and they get an input return.
