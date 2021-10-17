@@ -24,13 +24,12 @@ def instructions():
     """
     Game instruction function
     """
-    print('''Game instructions! \n
-        1. Game board contains 8 rows, columns and mines.
-        2. Enter a number between 1 and 8 for row
-            and column. (Example: "3 5" "3 5 F")
-        3. Flag a mine by making a selection and adding "F"
-        4. Hitting a mine results in game over!
-        \n''')
+    print('''Game instructions!
+          1. Game size depends on difficulty
+          2. Enter a number between 1 and 8 for row
+          and column. (Example: '3 5' '3 5 F')
+          3. Flag a mine by making a selection and adding 'F' 
+          4. Hitting a mine results in game over!''')
 
     print("    Game loading ... \n")
     time.sleep(2)
